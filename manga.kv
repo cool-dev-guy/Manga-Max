@@ -1,0 +1,110 @@
+#:import Window kivy.core.window.Window
+<MangaAppRootLayout>:
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            id:app_menu
+            padding:10
+            orientation:'horizontal'
+            size_hint:1,0.1
+            MDBoxLayout:
+                id:app_menu_in
+                orientation:'horizontal'
+                MDLabel:
+                    id:app_menu_in_h
+                    size_hint: 1,1
+                    text:"Manga Max"
+            MDIconButton:
+                id:app_menu_search_btn
+                icon: "language-python"
+                size_hint:0.1,1
+                on_press:app_menu_in.clear_widgets(),root.searchUI(self.parent)
+                pos_hint: {"center_x": .5, "center_y": .5}
+        MDScrollView:
+            size_hint:1,1
+            MDBoxLayout:
+                spacing:0
+                size_hint:1,None
+                height:self.minimum_height
+                orientation:'vertical'
+                MDBoxLayout:
+                    allow_stretch: True
+                    size_hint:1,None
+                    height:root.height-app_menu.height
+                    orientation:'vertical'
+                    RelativeLayout:
+                        size_hint:1,0.6
+                        
+                        BoxLayout:
+                                
+                            AsyncImage:
+                                id:app_bottom_slider_overlay
+                                keep_ratio:False
+                                allow_stretch: True
+                                source: 'https://uploads.mangadex.org/covers/a2c1d849-af05-4bbc-b2a7-866ebb10331f/29c2c618-f7ed-467e-85b1-465e0aa06e3f.jpg'
+
+                        BoxLayout:
+                            opacity: 1
+                            Image:
+                                source: 'b.png'
+                                id:app_top_slider_overlay
+                                allow_stretch: True
+                                keep_ratio:False
+                                size:app_bottom_slider_overlay.height,app_bottom_slider_overlay.width
+                        BoxLayout:
+                            padding:15
+                            size_hint:1,0.25
+                            pos_hint: {'x': 0, 'y': 0.02}
+                            MDBoxLayout:
+                                orientation:'vertical'
+                                MDLabel:
+                                    font_style:'Subtitle1'
+                                    text:"hellow thisd is a name"
+                                    size_hint:1,1
+                                MDLabel:
+                                    font_style:'Caption'
+                                    text:"hellow thisd is a name"
+                                    size_hint:1,1
+
+                            MDRaisedButton:
+                                pos_hint: {'x': 0, 'y': 0.2}
+                                text: "Read"
+                                icon: "android"
+                                text_color: "white"
+                                md_bg_color: "red"
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        size_hint:1,0.5
+                        padding:10
+                        MDLabel:
+                            text:"Popular"
+                            size_hint:1,0.45
+                        MDScrollView: 
+                            size_hint:1,1
+                            bar_color:(0,0,0,0)
+                            bar_inactive_color:(0,0,0,0)
+                            do_scroll_x: True
+                            do_scroll_y: False
+                            MDBoxLayout:
+                                width:self.minimum_width
+                                spacing:4
+                                orientation:'horizontal'
+                                size_hint:None,1
+                                MDCard:
+                                    size_hint:None,1
+                                    width:dp(120)
+                                MDCard:
+                                    size_hint:None,1
+                                    width:dp(120)
+                                MDCard:
+                                    size_hint:None,1
+                                    width:dp(120)
+                                MDCard:
+                                    size_hint:None,1
+                                    width:dp(120)
+
+                MDLabel:
+                    allow_stretch: True
+                    size_hint:1,None
+                    height:root.height-app_menu.height
+                    text:"Page 2"
